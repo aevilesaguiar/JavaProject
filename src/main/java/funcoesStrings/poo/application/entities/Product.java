@@ -1,12 +1,18 @@
 package funcoesStrings.poo.application.entities;
 
 public class Product {
-    public String name;
-    public Double price;
-    public Integer quantity;
+    private String name;
+    private Double price;
+    private Integer quantity;
 
 
     public Product() {
+    }
+
+    public Product(String name, Double price) {
+        this.name = name;
+        this.price = price;
+
     }
 
     public Product(String name, Double price, Integer quantity) {

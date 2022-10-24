@@ -108,5 +108,54 @@ apenas métodos estáticos. Este tipo de classe fornece funcionalidades comuns q
 Nota3: se os membros da minha classe não forem estáticos eu sou obrigada a instanciar o Objeto do tipo da classe, e tenho que chamar
 as operações a partir do objeto.
 
+## Construtores, palavras this, sobrecarga , encapsulamento
+
+- Construtor
+
+é uma operação especial da classe, que executa no momento da instanciação do objeto, quando nós damos o comando new.
+
+Para que usar os construtores?
+
+Uso comuns:
+Inicia valores dos atributos 
+Permitir ou obrigar que o objeto receba dados/dependencias no momento de sua instanciação(injeção de dependencia)
+
+Se um construtor customizado não for especificado, a classe disponibiliza o construtor padrão:
+Product p = new product();
+
+é possivel especificar mais de um construtor na mesma classe (sobrecarga).
 
 
+this: referencia para o atributo do próprio objeto. Ou seja ele serve para diferenciar o atributo do objeto do parametro do construtor.
+
+Palavra this: é uma referencia oara o próprio objeto.
+
+Usos comuns da palavra this:
+- Diferenciar atributos de variáveis locais.
+- Passar o próprio objeto como argumento na chamada de um método ou construtor
+
+
+## Sobrecarga
+
+• É um recurso que uma classe possui de oferecer mais de uma operação com o mesmo nome, porém com diferentes listas de
+parâmetros
+
+A sobrecarga de métodos (overload) é um conceito do polimorfismo que consiste basicamente em criar variações de um 
+mesmo método, ou seja, a criação de dois ou mais métodos com nomes totalmente iguais em uma classe.
+
+## Encapsulamento
+
+• É um princípio que consiste em esconder detalhes de implementação de uma classe, expondo apenas
+operações seguras e que mantenham os objetos em um estado consistente.
+• Regra de ouro: o objeto deve sempre estar em um estado consistente, e a própria classe deve garantir isso.
+- Um objeto NÃO deve expor nenhum atributo (usar modificador de acesso private)
+  Os atributos devem ser acessados por meio de métodos get e set
+
+## Modificadores de Acessso
+
+• https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html
+• private: o membro só pode ser acessado na própria classe
+• (nada): o membro só pode ser acessado nas classes do mesmo pacote
+• protected: o membro só pode ser acessado no mesmo pacote, bem como em subclasses de pacotes diferentes
+• public: o membro é acessado por todas classes (ao menos que ele resida em
+um módulo diferente que não exporte o pacote onde ele está)
