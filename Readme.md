@@ -159,3 +159,88 @@ operações seguras e que mantenham os objetos em um estado consistente.
 • protected: o membro só pode ser acessado no mesmo pacote, bem como em subclasses de pacotes diferentes
 • public: o membro é acessado por todas classes (ao menos que ele resida em
 um módulo diferente que não exporte o pacote onde ele está)
+
+## Classes são tipos referencia
+
+Classes são tipos referencia. Variáveis cujo tipo são classes não devem ser entendidas  como caixas, mas sim "tentáculos"(ponteiros) para caixas.
+
+Stack: é a área da memória as variáveis que você declara no seu programa. Ex: Product p1,p2;
+
+Quando eu faço p1 = new Product("TV", 900.00, 0);  passando os valores , vai ser alocado um objeto numa outra área de memória chamada heap
+
+Heap: é a área da memória onde são alocados os objetos em tempo de execução, isso chama alocação dinâmica de memória
+
+![](.Readme_images/34988554.png)
+
+Essa variavel p1 não vai guardar o produto em si , as caixinhas do nome,valor, quantidade mas sim o endereço de memória
+correspondente ao endereço de memória onde estiver o objeto que foi alocado.
+
+Por isso dizemos que variáveis que são do tipo classe elas são na verdade referencias, tentáculos ou ponteiros, por que
+dentro dela vai ter uma referencia, um endereço,  que vai dizer onde está o objeto. Inclusive nós  a identificamos
+com uma seta.
+
+
+## Valor null
+
+Tipos referencia aceitam o valor "null", que indica que a variável aponta para ninguém.
+
+![](.Readme_images/3ad5a9ab.png)
+
+quando eu digo que p2 recebe null , quer dizer que ela aponta para ninguém.
+
+## Tipos primitivos são tipos valor
+
+Em Java, tipos primitivos são tipos valor. Tipos valor são CAIXAS e não ponteiros. 
+
+![](.Readme_images/c5d42593.png)
+
+nesse caso eu guardo o próprio valor e não a referencia como no caso das classes referencia
+
+![](.Readme_images/1ca3788f.png)
+
+## Valores Padrão
+
+• Quando alocamos (new) qualquer tipo estruturado (classe ou array),
+são atribuídos valores padrão aos seus elementos
+• números: 0
+• boolean: false
+• char: caractere código 0
+• objeto: null
+
+![](.Readme_images/68e96f0c.png)
+
+![](.Readme_images/de660d2a.png)
+
+## Desalocação de memória - garbage collector e escopo local
+
+- Garbage collector
+
+É um processo que automatiza o gerenciamento de memória de um programa em execução
+• O garbage collector monitora os objetos alocados dinamicamente pelo programa (no heap), desalocando aqueles que não estão mais
+sendo utilizados.
+
+![](.Readme_images/40dfae52.png)
+
+Um objeto sem referencia será desacolado pelo o garbage collector.
+
+• Objetos alocados dinamicamente, quando não possuem mais
+referência para eles, serão desalocados pelo garbage collector
+• Variáveis locais são desalocadas imediatamente assim que seu escopo
+local sai de execução
+
+## Vetores
+
+• Em programação, "vetor" é o nome dado a arranjos/array  unidimensionais
+
+• Arranjo (array) é uma estrutura de dados:
+      • Homogênea (dados do mesmo tipo)
+      • Ordenada (elementos acessados por meio de posições)
+      • Alocada de uma vez só, em um bloco contíguo de memória
+
+• Vantagens:
+
+    • Acesso imediato aos elementos pela sua posição
+• Desvantagens:
+  
+    • Tamanho fixo
+    • Dificuldade para se realizar inserções e deleções
