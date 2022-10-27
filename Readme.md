@@ -506,3 +506,38 @@ O item de um pedido(Order item) tem um Produto, está associado com um produto.
 Status do pedido que é o tipo do atributo que está em Order( - status: OrderStatus)
 
 Lembrando que a composição de Objetos pode ocorrer não só com entidades, ela pode ocorrer com serviços
+
+## Herança
+
+• É um tipo de associação que permite que uma classe herde todos dados e comportamentos de outra
+
+- Definições importantes:
+
+ Vantagens:
+
+    • Reuso
+    • Polimorfismo
+
+• Sintaxe
+
+    • class A extends B
+
+Herança permite o reuso de atributos e métodos (dados e comportamento)
+
+![](.Readme_images/9e7a8bfd.png)
+
+
+## Definições importantes quando estamos trabalhando com Herança
+
+![](.Readme_images/aede6432.png)
+
+Account é chamada de generaalização é o tipo mais genérico que eu tenho. Super Classe é Account
+
+BussinessAccount é uma especialização é uma classe especifica. BussinessAccount é chamada de classe 
+derivada. Falamos que a classe BussinessAcount estende Account, ou seja ela tem tudo que account tem
+e mais algumas coisas.
+
+Quando eu instancio um BussinesAccount eu vou ter um Objeto só, e um objeto vai ter todos os membros
+das duas classes. Por isso falamos que herança é uma associação entre classes e não entre objetos.
+
+
