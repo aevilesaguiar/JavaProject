@@ -6,10 +6,10 @@ import java.util.Scanner;
 public class LerAltura {
     public static void main(String[] args) {
 
-        Locale.setDefault(Locale.US);
+       // Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
-        Integer n = sc.nextInt();
+        int n = sc.nextInt();
 
         double[] vect = new double[n];
 

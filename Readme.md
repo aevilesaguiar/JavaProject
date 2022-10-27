@@ -244,3 +244,105 @@ local sai de execução
   
     • Tamanho fixo
     • Dificuldade para se realizar inserções e deleções
+
+## Boxing, unboxing e wrapper classes
+
+- Boxing (encaixotamento): É o processo de conversão de um objeto tipo valor para um objeto tipo referência compatível;
+
+int x = 20;
+Object obj = x;
+System.out.println(x);
+
+lembrando que a mémoria de um tipo valor ficam na stack
+
+- Unboxing(desencaixotamento): É o processo de conversão de um objeto tipo referência para um objeto tipo valor compatível;
+int y = (int) obj;
+System.out.println(y);
+
+lembrando que a mémoria de um tipo Objeto ficam na heap
+
+- Wrapper classes
+
+  • São classes equivalentes aos tipos primitivos
+  • Boxing e unboxing é natural na linguagem
+
+  • Uso comum: campos de entidades em sistemas de informação (IMPORTANTE!)
+           • Pois tipos referência (classes) aceitam valor null e usufruem dos recursos OO
+
+![](.Readme_images/05768470.png)
+
+## Laço "for each"
+
+Sintaxe opcional e simplificada para percorrer coleções
+
+Sintaxe:
+
+for(Tipo apelido: coleção){
+    <comando 1>
+    <comando 2>
+}
+
+## Quais as diferenças entre array e arraylist?
+
+- Array
+
+Tem o tamanho fixo, temos que declarar o seu tamanho ao cria-ló
+
+É uma estrutura de dados nativa do core do Java
+
+Tem seus valores acessados por []
+
+Pode armazenar tanto tipos primitivos como objetos
+
+- Arraylist
+
+Tem tamanho dinâmico, não é obrigatório declarar seu tamanho em sua instanciação
+
+Faz parte do framework Collection, sendo uma implementação da interface List
+
+Tem seus valores acessados por metodos, ex: get()
+
+Não suporta tipos primitivos, apenas objetos
+
+Obs: quando fazemos arraylist.add(1), o tipo primitivo int é convertido para um objeto Integer
+
+
+## Listas
+
+- Lista é uma estrutura de dados:
+• Homogênea (dados do mesmo tipo)
+• Ordenada (elementos acessados por meio de posições)
+• Inicia vazia, e seus elementos são alocados sob demanda( diferente do vetor que já temos que declarar)
+• Cada elemento ocupa um "nó" (ou nodo) da lista
+• Lista encadeada por que cada nodo da lista aponta para o próximo nodo e assim por diante e o último nodo vai ter um valor nulo
+ou indicador para falar que ele é o ultimo nodo da lista.
+
+
+Uma interface é um tipo que define apenas a especificação das operações. Se um tipo é interface eu não posso instanciar esse 
+tipo, por isso eu uso algumas classes para implentar a especificação.
+
+-  Tipo (interface): List
+   • Classes que implementam a interface: ArrayList, LinkedList, etc
+
+• Vantagens:
+    • listas tem Tamanho variável (diferente do vetor que tem tamanho fixo)
+    • Facilidade para se realizar inserções e deleções
+• Desvantagens:
+    • Acesso sequencial aos elementos *
+
+## Operações/comandos list
+
+• Tamanho da lista: size()
+• Obter o elemento de uma posição: get(position)
+• Inserir elemento na lista: add(obj), add(int, obj)
+• Remover elementos da lista: remove(obj), remove(int), removeIf(Predicate)
+• Encontrar posição de elemento: indexOf(obj), lastIndexOf(obj)
+• Filtrar lista com base em predicado:
+List<Integer> result = list.stream().filter(x -> x > 4).collect(Collectors.toList());
+• Encontrar primeira ocorrência com base em predicado:
+Integer result = list.stream().filter(x -> x > 4).findFirst().orElse(null);
+
+
+## Observações List
+
+- List não aceita tipos primitivos, só posso usar Object/  Wrappers Class;
