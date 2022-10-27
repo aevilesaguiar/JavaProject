@@ -346,3 +346,163 @@ Integer result = list.stream().filter(x -> x > 4).findFirst().orElse(null);
 ## Observações List
 
 - List não aceita tipos primitivos, só posso usar Object/  Wrappers Class;
+
+## Matrizes
+
+![](.Readme_images/94497244.png)
+
+
+## Trabalhando com data-hora
+
+Conceitos importantes
+
+• Data-[hora] local:
+ano-mês-dia-[hora] sem fuso horário
+[hora] opcional 
+
+• Data-hora global:
+ano-mês-dia-hora com fuso horário
+
+• Duração:
+tempo decorrido entre duas data-horas
+
+![](.Readme_images/7ca34351.png)
+
+Quando usar?
+
+• Data-[hora] local:
+    Quando o momento exato não interessa a pessoas de outro fuso horário.
+    Uso comum: sistemas de região única, Excel.
+        Data de nascimento: "15/06/2001"
+        Data-hora da venda: "13/08/2022 às 15:32" (presumindo não interessar fuso horário)
+
+• Data-hora global:
+    Quando o momento exato interessa a pessoas de outro fuso horário.
+    Uso comum: sistemas multi-região, web.
+        Quando será o sorteio? "21/08/2022 às 20h (horário de São Paulo)"
+        Quando o comentário foi postado? "há 17 minutos"
+        Quando foi realizada a venda? "13/08/2022 às 15:32 (horário de São Paulo)"
+        Início e fim do evento? "21/08/2022 às 14h até 16h (horário de São Paulo)"
+
+Timezone (fuso horário)
+
+• GMT - Greenwich Mean Time
+    • Horário de Londres
+    • Horário do padrão UTC - Coordinated Universal Time
+    • Também chamado de "Z" time, ou Zulu time
+
+• Outros fuso horários são relativos ao GMT/UTC: • São Paulo: GMT-3
+    • Manaus: GMT-4
+    • Portugal: GMT+1
+
+• Muitas linguagens/tecnologias usam nomes para as timezones: 
+    • "US/Pacific"
+    • "America/Sao_Paulo"
+    • etc.
+
+
+![](.Readme_images/81a464d7.png)
+
+Esse padrão especifica como temos que representar datas e hora na forma de texto.
+
+## Operações importantes com data-hora
+
+![](.Readme_images/da738415.png)
+
+
+![](.Readme_images/51968b06.png)
+
+
+![](.Readme_images/a3af5e21.png)
+
+![](.Readme_images/fb5124ff.png)
+
+
+## Data forma antes do java 8
+
+![](.Readme_images/01149fa7.png)
+Date era a forma mais classica de se armazenar uma data
+![](.Readme_images/ccbba4a0.png)
+![](.Readme_images/b362eb10.png)
+
+## Enum e Composição
+
+Enumerações
+
+• É um tipo especial que serve para especificar de forma literal um conjunto de constantes relacionadas
+
+• Palavra chave em Java: enum
+
+• Vantagem: melhor semântica, código mais legível e auxiliado pelo compilador
+
+• Referência: https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
+
+ - Ciclo de vida de um pedido
+
+Estado por quais um pedido passa ao longo do seu ciclo de vida
+
+![](.Readme_images/ed95b2b4.png)
+
+(Pagamento Pendente)->Cobrança-> (Processando) ->despacho  ->(enviando) ->entrega->(entregue)
+
+## Notação UML para um tipo enumerado
+
+![](.Readme_images/02d414dc.png)
+
+![](.Readme_images/982a6155.png)
+
+Num sistema você pode ter classes que representam o desidn de um sistema: 
+
+- views: telas do sistema
+- controladores: é o que fez o meio de campo entre a tela e o sistema
+- Entities: entidades de negócios como Produtos, Clientes, Pedidos
+- Services: ondem temos a lógica/funcionalidades de um sistema
+- Repositores: são Objetos responsáveis por acessar os dados de um banco de dados;
+
+
+![](.Readme_images/2a8d7158.png)
+
+![](.Readme_images/73454599.png)
+
+## Composição
+
+• É um tipo de associação que permite que um objeto contenha outro
+
+• Relação "tem-um" ou "tem-vários"
+
+• Vantagens
+• Organização: divisão de responsabilidades
+• Coesão(cada objeto é responsável por uma unica coisa)
+• Flexibilidade
+• Reuso (podemos reaproveitar um objeto é mais de um lugar)
+
+• Nota: embora o símbolo UML para composição (todo-parte) seja o diamante preto, neste contexto estamos chamando de composição qualquer associação
+tipo "tem-um" e "tem-vários".
+
+
+![](.Readme_images/1cdcad20.png)
+
+O simbolo de composição na UML é o diamante preto, sendo que a classe que estiver no diamante preto 
+que é o pedido ele é o lado do todo  e o outro lado é o lado das partes.
+Então estou dizendo que o pedido é o todo e ele contém as partes que são os itens. 
+
+![](.Readme_images/bfe86423.png)
+
+Isso aqui é uma associação de composição  que representa uma relação todo parte entre objetos.
+
+![](.Readme_images/241a738b.png)
+
+A relação entre o pedido e o cliente , temos uma seta desenhada , não tem o diamante preto, por que
+não é uma relação de todo parte, o cliente não é parte do pedido, mas está associado com o pedido
+Mas mesmo assim chamamos uma composição de objetos. Na hora de você implementar  Pedido(Order)
+vai ter um atributo Client.
+
+![](.Readme_images/10573e5a.png)
+
+O item de um pedido(Order item) tem um Produto, está associado com um produto.
+
+![](.Readme_images/8b5ff1db.png)
+
+Status do pedido que é o tipo do atributo que está em Order( - status: OrderStatus)
+
+Lembrando que a composição de Objetos pode ocorrer não só com entidades, ela pode ocorrer com serviços
