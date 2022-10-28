@@ -541,3 +541,165 @@ Quando eu instancio um BussinesAccount eu vou ter um Objeto só, e um objeto vai
 das duas classes. Por isso falamos que herança é uma associação entre classes e não entre objetos.
 
 
+## UpCasting e downcasting
+
+![](.Readme_images/51c58b09.png)
+upcasting: converte da subclasse para supreclasse.
+downCasting: converte da superclasse para a subclasse
+
+- Exemple
+
+![](.Readme_images/f21158d5.png)
+
+## Sobreposição, palavra super,anotação @Override
+
+![](.Readme_images/bb4f8d01.png)
+
+![](.Readme_images/2d48a60c.png)
+
+## Classes e métodos final
+
+![](.Readme_images/2ffa6d68.png)
+
+final quando usada em uma classe evita que ela seja herdada.
+final quando usado no método evita que ele seja sopreposto
+
+![](.Readme_images/561d84e5.png)
+
+![](.Readme_images/caf6b81a.png)
+
+
+## Para quê utilizar a palavra final?
+
+-  Segurança: dependendo das regras do negócio, às vezes é desejável garantir que uma classe não 
+seja herdada, ou que um método não seja sobreposto.
+  - Geralmente convém acrescentar final em métodos sobrepostos, pois sobreposições múltiplas  
+  podem ser uma porta de entrada para inconsistências
+- Performance: atributos de tipo de uma classe final são analisados de forma mais rápida em 
+tempo de execução.
+- Exemplo clássico: String
+
+## Polimorfismo
+
+Pilares POO
+
+- Abstração(Abstraction.)
+- Encapsulamento(Encapsulation.)
+- Herança(Inheritance.)
+- Polimorfismo(Polymorphism.)
+
+
+- Polimorfismo
+
+Em Programação Orientada a Objetos, polimorfismo é o recurso que
+permite que variáveis de um mesmo tipo mais genérico possam
+apontar para objetos de tipos específicos diferentes, tendo assim
+comportamentos diferentes conforme cada tipo específico.
+
+![](.Readme_images/905c54ed.png)
+
+![](.Readme_images/cc9d5216.png)
+
+
+## Classes abstratas
+
+• São classes que não podem ser instanciadas;
+
+• É uma forma de garantir herança total: somente subclasses não
+abstratas podem ser instanciadas, mas nunca a superclasse abstrata
+
+![](.Readme_images/8fa8d0a7.png)
+
+- Questionamento
+
+![](.Readme_images/ff05a280.png)
+
+
+## Métodos abstratos
+
+![](.Readme_images/5de5f600.png)
+
+
+## Exceções
+
+• Uma exceção é qualquer condição de erro ou comportamento  inesperado encontrado por um 
+programa em execução
+
+• Em Java, uma exceção é um objeto herdado da classe:
+• java.lang.Exception - o compilador obriga a tratar ou propagar
+• java.lang.RuntimeException - o compilador não obriga a tratar ou propagar
+
+• Quando lançada, uma exceção é propagada na pilha de chamadas de
+métodos em execução, até que seja capturada (tratada) ou o
+programa seja encerrado
+
+ Referencias: https://docs.oracle.com/javase/10/docs/api/java/lang/package-tree.html
+
+![](.Readme_images/d641494e.png)
+
+Error: são erros que não se espera que o programador trate. ex: OutOfMemoryError(Estourou a memória)
+
+Por que exceções?
+
+O modelo de tratamento de exceções permite que erros sejam
+tratados de forma consistente e flexível, usando boas práticas
+
+• Vantagens de usar tratamento de exceções:
+
+- Delega a lógica do erro para a classe responsável por conhecer as regras que
+podem ocasionar o erro
+-  Trata de forma organizada (inclusive hierárquica) exceções de tipos diferentes
+-  A exceção pode carregar dados quaisquer
+
+
+## Estrutura try-catch
+
+• Bloco try ( tenta executar esso aqui)
+
+    • Contém o código que representa a execução normal do trecho de código que
+    pode acarretar em uma exceção
+
+• Bloco catch (captura a exceção e executa uma lógica)
+    
+    • Contém o código a ser executado caso uma exceção ocorra
+    • Deve ser especificado o tipo da exceção a ser tratada (upcasting é permitido,
+    ou seja eu posso usar um tipo de exceção genérica que pega várias exceções ao mesmo
+    tempo)
+    Posso usar quantos blocos cats forem necessários
+
+![](.Readme_images/223441b9.png)
+
+
+ ## Pilha de chamadas de métodos (stack trace)
+
+O que é um StackTrace?
+
+Um stacktrace é uma ferramenta de depuração muito útil. Ele mostra a pilha de chamadas 
+(ou seja, a pilha de funções que foram chamadas até aquele ponto) no momento em que uma 
+exceção não capturada foi lançada (ou no momento em que o rastreamento de pilha foi gerado
+manualmente). Isso é muito útil porque não mostra apenas onde ocorreu o erro, mas também 
+como o programa foi parar naquele local do código. Isso leva à próxima pergunta:
+
+O que é uma exceção?
+
+Uma exceção é o que o ambiente de tempo de execução usa para informar que ocorreu um erro. 
+Exemplos populares são NullPointerException, IndexOutOfBoundsException ou ArithmeticException. 
+Cada um deles é causado quando você tenta fazer algo que não é possível. Por exemplo, 
+um NullPointerException será lançado quando você tentar desreferenciar um objeto Null.
+
+    e.printStackTrace();  eu posso analisar a exceção
+
+## Bloco Finally
+
+É um bloco que contém código a ser executado independentemente de ter
+ocorrido ou não uma exceção.
+
+• Exemplo clássico: fechar um arquivo, conexão de banco de dados, ou outro
+recurso específico ao final do processamento
+
+![](.Readme_images/44319066.png)
+
+
+## Criando exceções personalizadas
+
+![](.Readme_images/fdb7942b.png)

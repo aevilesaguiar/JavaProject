@@ -1,9 +1,9 @@
 package herancaEPolimorfismo.entities;
 
-public class Account {
+public abstract class Account {
 
     private Integer number;
-    private String holder;//titulas
+    private String holder;//titular
     protected Double balance;//saldo da conta
 
 
@@ -39,7 +39,8 @@ public class Account {
     }
     //saque
     public void withdraw(Double amount){
-            this.balance-=amount;
+    //saque desconta 5.00
+        this.balance-=amount+5.00;
     }
     //deposito
     public void deposit(Double amount){
