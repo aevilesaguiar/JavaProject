@@ -703,3 +703,12 @@ recurso específico ao final do processamento
 ## Criando exceções personalizadas
 
 ![](.Readme_images/fdb7942b.png)
+
+
+Geralmente quando uma classe é exceção eu colocamos o sufixo Exception.
+A nossa exceção personalisada pode ser uma extensão da classe Exception ou uma extensão da classe RuntimeException 
+A diferença das duas é que:
+- RuntimeException é um tipo de exceção que o compilador não te obrigada a tratar a exceção, se você
+não colocar o try/catch o compilador não sinaliza nada.
+- Exception é um tipo de exceção que o compilador te obriga a tratar
+

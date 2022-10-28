@@ -1,6 +1,6 @@
 package excecao.program;
 
-import excecao.entities.ReservationMuitoRuim;
+import excecao.model.entities.ReservationMuitoRuim;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

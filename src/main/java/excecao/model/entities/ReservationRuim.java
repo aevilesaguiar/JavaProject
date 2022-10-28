@@ -1,4 +1,4 @@
-package excecao.entities;
+package excecao.model.entities;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
