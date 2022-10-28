@@ -1,17 +1,19 @@
 package excecao.program;
 
 import excecao.entities.ReservationMuitoRuim;
+import excecao.entities.ReservationRuim;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-public class ProgamSolucaoMuitoRuim {
+public class ProgamSolucaoRuim {
     public static void main(String[] args) throws ParseException {
 
-        //Problema de delegação por isso é uma solução muito ruim
-        //lógica de validação mo programa principal
+        //Problema de delegação por isso é uma solução ruim
+        //Método retornando string: muito utilizada em liguagens antigas tipo linguagem c, tinhamos uma função que retornava um erro
+        //aí essa função tinha que retoornar o código do erro para o programador tratar essa exceção
 
 
         Scanner sc = new Scanner(System.in);
@@ -30,7 +32,7 @@ public class ProgamSolucaoMuitoRuim {
 
         }else{
             //realize a reserva
-            ReservationMuitoRuim reservation = new ReservationMuitoRuim(number,checkin,checkOut);
+            ReservationRuim reservation = new ReservationRuim(number,checkin,checkOut);
             System.out.println("Reservation "+reservation);//já foi definido no Tostring
 
             System.out.println();
@@ -40,17 +42,14 @@ public class ProgamSolucaoMuitoRuim {
             System.out.println("CheckOut: ");
              checkOut = sdf.parse(sc.next());
 
-             //cria uma data com a hora de agora
-            Date now = new Date();
 
-            //as datas para atualização não podem ser menores que a data atual
-            if(checkin.before(now) || checkOut.before(now)){
-                System.out.println("Error in reservation : Reservation dates for updates must be future dates");
-            }else if(!checkOut.after(checkin)){
-                System.out.println("Error in reservation: Check-out date must be after check-in date");
-            }else{
-                //método que atualiza as datas
-                reservation.updateDates(checkin,checkOut);
+             // reservation.updateDates(checkin,checkOut); retorna uma string de acordo com o método que alteramos
+            //e esse String é o que vai dizer para mim se ocorreu erro ou não
+             String error =reservation.updateDates(checkin,checkOut);
+
+             if(error != null) {
+                 System.out.println("Error in reservation: " + error);
+             }else{
                 System.out.println("Reservation "+reservation);//já foi definido no Tostring
 
             }
