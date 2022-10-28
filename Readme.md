@@ -712,3 +712,20 @@ A diferença das duas é que:
 não colocar o try/catch o compilador não sinaliza nada.
 - Exception é um tipo de exceção que o compilador te obriga a tratar
 
+- Clausula throws: propaga a exceção ao invéns de tratá-la
+- Clausula throw: lança a exceção/"corta" o método
+- Exception: compilador obrigada a atratar ou propagar
+- Runctime Exception: compilador não obrigada
+
+O modelo de tratamento de exceções permite que erros sejam tratados de forma consistente e flexivel ,
+usando boas práticas.
+
+- Vantagens
+Lógica delegada
+- Construtores podem ter tratamentos de exceçãoes
+- Possibilidade de auxilio do compilador(Exception)
+- Código mais simples , não há aninhamento de considionais : a qualquer momento que uma exceção for dispsrada ,  
+a execução é interrompida e cai no bloco catch correspondente
+- é possivel inclusive capturar outras exceções de sistema;
+
+Nunca esquecer que a classe de négocio nunca pode dar print
