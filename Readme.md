@@ -729,3 +729,59 @@ a execução é interrompida e cai no bloco catch correspondente
 - é possivel inclusive capturar outras exceções de sistema;
 
 Nunca esquecer que a classe de négocio nunca pode dar print
+
+## Trabalhando com arquivos
+
+##  Lendo arquivo texto com classes File e Scanner
+ 
+ Classes
+
+  • File - Representação abstrata de um arquivo e seu caminho  - https://docs.oracle.com/javase/10/docs/api/java/io/File.html
+  
+  • Scanner - Leitor de texto - https://docs.oracle.com/javase/10/docs/api/java/util/Scanner.html
+  
+  • IOException (Exception) - https://docs.oracle.com/javase/10/docs/api/java/io/IOException.html
+
+## FileReader e BufferedReader(ler arquivo)
+
+Classes
+• FileReader (stream de leitura de caracteres a partir de arquivos) - https://docs.oracle.com/javase/10/docs/api/java/io/FileReader.html
+Stream em programação significa uma sequencia, em outras palavras quando eu instanciar um FileReader eu vou estabelecer uma sequencia de
+leitura a partir de um aquivo, a medida que eu precisar ler esse arquivo eu vou navegando na Stream.
+
+• BufferedReader (mais rápido)  - https://docs.oracle.com/javase/10/docs/api/java/io/BufferedReader.html - 
+        https://stackoverflow.com/questions/9648811/specific-difference-betweenbufferedreader-and-filereader
+O BufferedReader será instanciado a partir do FileReader e ele implementa algumas otimizações usando Buffer de memória
+
+
+## Bloco try-with-resources
+
+• É um bloco try que declara um ou mais recursos, e garante que esses recursos serão fechados ao final do bloco
+
+• Disponível no Java 7 em diante
+
+• https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
+
+O bloco try-with-resources é muito melhor para se trabalhar com streams do que abrie e fechar e trabalhar manualmente essas streams
+Não é necessário fazer o fechamento manual.
+
+## FileWriter e BufferedWriter(Escrever)
+
+Classes
+
+• FileWriter (stream de escrita de caracteres em de arquivos) - https://docs.oracle.com/javase/10/docs/api/java/io/FileWriter.html
+    
+    • Cria/recria o arquivo: new FileWriter(path)
+    • Acrescenta ao arquivo existente: new FileWriter(path, true)
+
+• BufferedWriter (mais rápido)
+
+    • https://docs.oracle.com/javase/10/docs/api/java/io/BufferedWriter.html
+
+Do mesmo jeito que tínhamos o FileReader e BufferedReader para ler arquivos nós temos o FileWriter e BufferedWriter
+para escrever 
+
+
+
+
+
