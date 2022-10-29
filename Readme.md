@@ -330,7 +330,7 @@ tipo, por isso eu uso algumas classes para implentar a especificação.
 • Desvantagens:
     • Acesso sequencial aos elementos *
 
-## Operações/comandos list
+## Operações/comandos installments
 
 • Tamanho da lista: size()
 • Obter o elemento de uma posição: get(position)
@@ -338,9 +338,9 @@ tipo, por isso eu uso algumas classes para implentar a especificação.
 • Remover elementos da lista: remove(obj), remove(int), removeIf(Predicate)
 • Encontrar posição de elemento: indexOf(obj), lastIndexOf(obj)
 • Filtrar lista com base em predicado:
-List<Integer> result = list.stream().filter(x -> x > 4).collect(Collectors.toList());
+List<Integer> result = installments.stream().filter(x -> x > 4).collect(Collectors.toList());
 • Encontrar primeira ocorrência com base em predicado:
-Integer result = list.stream().filter(x -> x > 4).findFirst().orElse(null);
+Integer result = installments.stream().filter(x -> x > 4).findFirst().orElse(null);
 
 
 ## Observações List
@@ -781,7 +781,189 @@ Classes
 Do mesmo jeito que tínhamos o FileReader e BufferedReader para ler arquivos nós temos o FileWriter e BufferedWriter
 para escrever 
 
+## Interfaces(Definição Classica)
+
+Interface é um tipo que define um conjunto de operações que uma classe deve implementar.
+A interface estabelece um contrato que a classe deve cumprir.
+
+![](.Readme_images/86f0db61.png)
+
+Pra quê interfaces? Para criar sistemas com baixo acoplamento e flexíveis.
+
+## Inversão de controle, Injeção de dependência
+
+Quando fazemos associação direta de uma classe para outra gera um acoplamento forte, Por que a classe conhece a 
+dependencia concreta. Se a classe concreta mudar a classe terá que alterar a classe em alguns pontos de alteração.
+
+Quando a classe depende da interface nós temos um acoplamento fraco,pois a classe não conhece a dependencia concreta.
+Se a classe concreta mudar , a claase que a utiliza não muda nada.
+
+Se a propria classe fica responsável por instanciar as suas dependencias você gera um forte acoplamento e gera dois 
+pontos de alteração.
+
+- Inversão de controle
+  Padrão de desenvolvimento que consiste em retirar da classe a responsabilidade de instanciar suas dependências.
+- Injeção de dependência
+uma forma de realizar a inversão de controle: um componente externoinstancia a dependência, que é então injetada no 
+objeto "pai". 
+Pode serimplementada de várias formas: 
+
+    Construtor 
+    Classe de instanciação (builder / factory) 
+    Container / framework( que faz o processo automaticamente)
+
+
+## Herdar vs. cumprir contrato
+
+Em ambos os casos tanto na implementação da interface quanto na classe abstrata com 2 subclasses herndando nós temos:
+
+![](.Readme_images/185fc5b5.png)
+
+• Relação é-um (vale para interface e herança)
+
+• Generalização/especialização(vale para interface e herança)
+
+• Polimorfismo(vale para interface e herança)
+
+- Diferença fundamental entre herança e interface:
+
+• Herança => reuso de informações e comportamentos
+
+• Interface => contrato a ser cumprido
+
+
+## Herança múltipla e o problema do diamante
+
+
+A herança múltipla pode gerar o problema do diamante: uma ambiguidade causada pela existência do mesmo método em mais de 
+uma superclasse.
+Herança múltipla não é permitida na maioria das linguagens!
+
+![](.Readme_images/d9f896e4.png)
+
+## Porém, uma classe pode implementar mais de uma interface
+
+
+ATENÇÃO:
+Isso NÃO é herança múltipla,pois NÃO HÁ REUSO na relação entre ComboDevice e asinterfaces Scanner e Printer.
+ComboDevice não herda, mas sim implementa as interfaces(cumpre o contrato)
+
+![](.Readme_images/4e337fc0.png)
+
+A linguagem java não permite extender mais de uma classe. Para esse tipo de implementação usamos uma interface
+
+## Interface Comparable
+
+Interface Comparable — Como comparar objetos na linguagem de programação Java
+
+A comparação de dados é uma tarefa essencial em algoritmo de ordenação. Apenas dessa forma é possível identificar quais
+dados são os menores, maiores e iguais. A comparação de dados funciona de maneira diferente para tipos primitivos e 
+objetos na linguagem Java.
+
+Tipos primitivos
+Os tipos primitivos são facilmente comparados. Para este fim, existem operadores de igualdade e relacionais nativos da linguagem. São eles:
+
+== igual que
+!= diferente que
+> maior que
+>= maior igual que
+< menor que
+<= menor igual que
+
+int a = 10;        
+int b = 13;        
+if(a < b){            
+System.out.println("a é menor que b");         
+}else{            
+System.out.println("a é menor que b");        
+}
+
+- Igualdade de objetos
+
+Os objetos são tipos de dados complexos que podem ser compostos por vários atributos. Devido a esta característica, 
+é preciso implementar um  método específico para verificar a igualdade de todos os atributos. Na linguagem Java, este 
+é papel do método equals.
+
+String s = "Uma String";        
+String t = "Outra String";        
+if(s.equals(t)){            
+System.out.println("As duas Strings são iguais.");        
+}else{            
+System.out.println("As duas Strings são diferentes.");        
+}
+
+O método equals é definido na classe Object e verifica apenas se o hashcode dos objetos são iguais. 
+Por isso esse método deve ser implementado em todas as classes que deseja testar a igualdade.
+
+- Como verificar qual é o objeto maior
+
+A classe Object não fornece um método padrão para comparação relacionais de objetos. Para este objetivo é preciso
+utilizar a interface Comparable.java.
+
+O primeiro passo é implementar a interface na classe desejada.
+
+public class Produto implements Comparable<Produto> { }
+
+O segundo passo é adicionar o método compareTo na classe.
+
+@Override
+public int compareTo(Produto o) {
+return 0;
+}
+
+O método retorna um inteiro. O retorno tem os seguintes significados:
+
+Um inteiro negativo: o objeto é menor que
+Zero: Os objetos comparados são iguais
+Um inteiro positivo: o objeto é maior que
+O terceiro passo é implementar o método compareTo.
+
+OBS: formato csv é separado por vírgula
+
+
+## Default methods( defender methods) métodos padrão
+
+• A partir do Java 8, interfaces podem conter métodos concretos.
+
+As interfaces podem ter métodos estaticos e privados
+
+• A intenção básica é prover implementação padrão para métodos, de modo a evitar:
+
+• 1) repetição de implementação em toda classe que implemente a interface
+
+• 2) a necessidade de se criar classes abstratas para prover reuso da implementação 
+
+os métodos padrão vem com a palavrinha default e assim o compilador não reclama.
 
 
 
+• Outras vantagens:
 
+• Manter a retrocompatibilidade com sistemas existentes
+
+• Permitir que "interfaces funcionais" (que devem conter apenas um método)possam prover outras operações padrão reutilizáveis
+
+
+Considerações importantes:
+
+• Sim: agora as interfaces podem prover reuso
+
+• Sim: agora temos uma forma de herança múltipla
+
+• Mas o compilador reclama se houver mais de um método com a mesma
+assinatura, obrigando a sobrescreve-lo
+
+• Interfaces ainda são bem diferentes de classes abstratas. Interfaces
+não possuem recursos tais como construtores e atributos.
+
+## Generics
+
+• Generics permitem que classes, interfaces e métodos possam ser parametrizados por tipo. 
+
+Seus benefícios são:
+
+• Reuso
+• Type safety
+• Performance
+
+• Uso comum: coleções
