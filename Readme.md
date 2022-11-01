@@ -307,7 +307,7 @@ Não suporta tipos primitivos, apenas objetos
 Obs: quando fazemos arraylist.add(1), o tipo primitivo int é convertido para um objeto Integer
 
 
-## Listas
+## Listas - List
 
 - Lista é uma estrutura de dados:
 • Homogênea (dados do mesmo tipo)
@@ -956,6 +956,181 @@ assinatura, obrigando a sobrescreve-lo
 • Interfaces ainda são bem diferentes de classes abstratas. Interfaces
 não possuem recursos tais como construtores e atributos.
 
+get/set seria importante para fazer encapsulamento ou seja validação
+
+
+## Collections em java
+
+Uma coleção (collection) é uma estrutura de dados que serve para agrupar muitos elementos em uma única unidade, estes 
+elementos precisão ser Objetos, pode ter coleções homogêneas e heterogêneas, normalmente utilizamos coleções heterogêneas
+de um tipo especifico.
+
+![](.Readme_images/ff753220.png)
+
+![](.Readme_images/c04af0af.png)
+
+A interface Iterable representa uma coleção de Objetos que podem ser iterados
+
+A interface Collection é a interface principal que tem a assinatura dos métodos para adicionar e remover elementos e manipular
+esses dados também.
+
+LinkedList listas encadeadas.
+
+Todas as interfaces e classes são encontradas dentro do pacote (package) java.util, embora a interface Map não ser filha 
+direta da interface Collection ela também é considerada uma coleção devido a sua função.
+
+
+- Alguns dos métodos que devem ser implementados por todas as subclasses de Collection:
+
+add(Object e) – Adiciona um Objeto dentro da coleção.
+addAll(Collection c) – Adiciona uma coleção de Objetos dentro da coleção.
+contains(Object o) – Verifica se um Objeto está dentro da coleção.
+clear() - Remove todos os Objetos da coleção. 
+isEmpty() - Retorna um boolean informando se a coleção está vazia ou não.
+remove(Object o) – Remove um Objeto da coleção.
+size() - Retorna o tamanho da coleção.
+toArray() - Converte uma coleção em um vetor.
+
+
+
+## Java List
+
+A interface List faz parte da Api de Collections. A list representa uma lista ordenada de Objetos, é por meio da ordem que 
+a lista pode ser iterada em uma determinada ordem, e significa que cada objeto pode ser acessado em uma determinada posição
+na lista.
+
+O List é uma interface e o ArrayList é a classe que a implementa.
+
+Uma interface list representa uma coleção ordenada de elementos
+- Ordered
+- Not Unique
+Exemplo : 3,3,5,6,5,3
+
+![](.Readme_images/ebff4089.png)
+
+
+## Java Set
+
+A Interface Set representa uma coleção não ordenada  de elementos unicos.
+Set é a interface e o HashSet é sua implementação.
+
+- Unordered
+- Unique
+Exemplo:
+- 24,3,89
+
+- Características - Set
+
+Velocidade na pesquisa de dados, sendo mais rápida que um objeto do tipo List;
+A inserção de dados é mais lenta;
+Permite trabalhar com conjuntos e pode ser implementado como instâncias das classes HashSet ou TreeSet;
+Não precisa especificar a posição para adicionar um elemento;
+Não aceita valores duplicados. Se caso inserir um registro que já tenha no Set não será adicionado.
+Podem ser implementados como instâncias das classes HashSet ou TreeSet;
+
+
+Read more: http://www.linhadecodigo.com.br/artigo/3669/trabalhando-com-a-interface-set-no-java.aspx#ixzz7jOGYzAIN
+
+## Como Set testa igualdade?
+
+Como as coleções Hash testam igualdade?
+
+• Se hashCode e equals estiverem implementados:
+    
+    • Primeiro hashCode. Se der igual, usa equals para confirmar.
+    
+    • Lembre-se: String, Integer, Double, etc. já possuem equals e hashCode
+
+• Se hashCode e equals NÃO estiverem implementados:
+
+    • Compara as referências (ponteiros) dos objetos.
+
+## Como TreeSet compara os elementos?
+
+
+Recordando as implementações
+
+Set possui tres implementações Principais:
+
+-  Principais implementações:
+
+          HashSet - mais rápido (operações O(1) em tabela hash) e não ordenado
+          TreeSet - mais lento (operações O(log(n)) em árvore rubro-negra) e ordenado pelo compareTo do objeto (ou Comparator)
+          LinkedHashSet - velocidade intermediária e elementos na ordem em que são adicionados
+
+Ele utiliza o CompareTo para comparar elementos, temos que implementar a classe Comparable<>
+
+
+
+- Classe HashSet
+
+Classe que faz parte do pacote “java.util” e que é uma implementação da interface Set onde utiliza uma tabela hash, por isso do nome da classe.
+
+Características do HashSet
+Não tem ordenação na varredura ou impressão. A ordem de saída não é a mesma de entrada;
+Aceitam valores do tipo null;
+Não é sincronizada (thread-safe);
+Velocidade no acesso, leitura e modificação de dados;
+
+
+Read more: http://www.linhadecodigo.com.br/artigo/3669/trabalhando-com-a-interface-set-no-java.aspx#ixzz7jOGkuVYN
+
+
+- Classe TreeSet
+
+Essa classe fornece objetos de coleção de ordenação natural e faz parte da implementação da interface Set e está localizada dentro do pacote “java.util”.
+
+Características
+Os elementos inseridos dentro desse tipo de conjunto devem implementar a interface Comparable;
+A ordenação é por elementos únicos;
+Não suporta objetos nulos, se caso um elemento ser nulo é lançado a exceção NullPointerException;
+
+
+Read more: http://www.linhadecodigo.com.br/artigo/3669/trabalhando-com-a-interface-set-no-java.aspx#ixzz7jOGtp0VF
+
+
+![](.Readme_images/5fd0a418.png)
+
+
+## Map
+
+![](.Readme_images/7b4c38d6.png)
+
+Map é como se fosse um dicionarios, que guarda chave e valor.  -> Map<K,V>
+
+
+• https://docs.oracle.com/javase/10/docs/api/java/util/Map.html
+
+• É uma coleção de pares chave / valor
+
+        • Não admite repetições do objeto chave
+        • Os elementos são indexados pelo objeto chave (não possuem posição)
+        • Acesso, inserção e remoção de elementos são rápidos
+
+• Uso comum: cookies, local storage, qualquer modelo chave-valor
+
+• Principais implementações:
+
+    • HashMap - mais rápido (operações O(1) em tabela hash) e não ordenado
+    • TreeMap - mais lento (operações O(log(n)) em árvore rubro-negra) e ordenado pelo compareTo do objeto (ou Comparator)
+    • LinkedHashMap - velocidade intermediária e elementos na ordem em que são adicionados
+
+Alguns métodos importantes
+
+• put(key, value)-> insere elemento, remove(key), containsKey(key), get(key) -> recupera o elemenro pela chave
+
+    • Comparação é Baseado em equals e hashCode
+    • Se equals e hashCode não existir, é usada comparação de ponteiros
+
+• clear() -> limpar o conjunto
+
+• size()
+
+• keySet() - retorna um Set<K>
+
+• values() - retornaa um Collection<V> do tipo valor
+
+
 ## Generics
 
 • Generics permitem que classes, interfaces e métodos possam ser parametrizados por tipo. 
@@ -967,3 +1142,124 @@ Seus benefícios são:
 • Performance
 
 • Uso comum: coleções
+
+
+## Tipos curinga (wildcard types)
+
+
+Generics são invariantes
+List<Object> não é o supertipo de qualquer tipo de lista:
+
+List<Object> myObjs = new ArrayList<Object>();
+List<Integer> myNumbers = new ArrayList<Integer>();
+myObjs = myNumbers; // erro de compilação
+
+O ponto de interrogação (?) é conhecido como curinga na programação genérica. Representa um tipo desconhecido. 
+O curinga pode ser usado em várias situações, como o tipo de um parâmetro, campo ou variável local; às vezes como um 
+tipo de retorno. Ao contrário dos arrays, diferentes instanciações de um tipo genérico não são compatíveis entre si, 
+nem mesmo explicitamente. Essa incompatibilidade pode ser atenuada pelo curinga se ? é usado como um parâmetro de tipo 
+real.
+
+Para declarar um curinga de limite superior, use o caractere curinga ('?'), seguido pela palavra-chave extends, seguida 
+por seu limite superior.
+
+public static void add(List<? extends Number> list)
+
+
+O supertipo de qualquer tipo de lista é List<?>. Este é um tipo curinga:
+List<?> myObjs = new ArrayList<Object>();
+List<Integer> myNumbers = new ArrayList<Integer>();
+myObjs = myNumbers;
+
+Com tipos curinga podemos fazer métodos que recebem um genérico de "qualquer tipo"
+
+Não é possível adicionar dados a uma coleção de tipo curinga. O compilador já informa. Isso ocorre por que O compilador 
+não sabe qual é o tipo específico do qual a lista foi instanciada.
+
+## Curingas delimitados (bounded wildcards)
+
+- Problema 2 (princípio get/put)
+  Vamos fazer um método que copia os elementos de uma lista para uma
+  outra lista que pode ser mais genérica que a primeira.
+  List<Integer> myInts = Arrays.asList(1, 2, 3, 4);
+  List<Double> myDoubles = Arrays.asList(3.14, 6.28);
+  List<Object> myObjs = new ArrayList<Object>();
+  copy(myInts, myObjs);
+  copy(myDoubles, myObjs);
+
+## hashCode e equals
+
+• São operações da classe Object utilizadas para comparar se um objeto é igual a outro
+
+• equals: lento, resposta 100%
+
+• hashCode: rápido, porém resposta positiva não é 100%
+
+• Tipos comuns (String, Date, Integer, Double, etc.) já possuem implementação para essas operações. Classes personalizadas
+precisam sobrepô-las.
+
+- Equals
+  Método que compara se o objeto é igual a outro, retornando true ou false.
+
+  String a = "Maria";
+  String b = "Alex";
+  System.out.println(a.equals(b));
+
+- HashCode
+
+Método que retorna um número inteiro representando um código gerado a partir das informações do objeto
+
+String a = "Maria";
+String b = "Alex";
+System.out.println(a.hashCode());
+System.out.println(b.hashCode());
+
+- Regra de ouro do HashCode
+
+• Se o hashCode de dois objetos for diferente, então os dois objetos são diferentes
+
+![](.Readme_images/6dd91ef2.png)
+
+• Se o código de dois objetos for igual, muito provavelmente os objetos são iguais (pode haver colisão)
+
+HashCode e Equals personalizados
+public class Client {
+private String name;
+private String email;
+}
+
+- Set<T> é uma interface
+
+• Representa um conjunto de elementos (similar ao da Álgebra)
+        • Não admite repetições
+        • Elementos não possuem posição, poed possuir ordem
+        • Acesso, inserção e remoção de elementos são rápidos
+        • Oferece operações eficientes de conjunto: interseção, união, diferença.
+        • Principais implementações:
+                • HashSet - mais rápido (operações O(1) em tabela hash) e não ordenado
+                • TreeSet - mais lento (operações O(log(n)) em árvore rubro-negra) e ordenado pelo
+                compareTo do objeto (ou Comparator)
+                • LinkedHashSet - velocidade intermediária e elementos na ordem em que são adicionados
+
+
+Alguns métodos importantes
+
+• add(obj), remove(obj), contains(obj)
+
+• Baseado em equals e hashCode
+
+• Se equals e hashCode não existir, é usada comparação de ponteiros
+
+• clear()
+• size()
+• removeIf(predicate)
+
+• addAll(other) - união: adiciona no conjunto os elementos do outro conjunto, sem repetição
+• retainAll(other) - interseção: remove do conjunto os elementos não contitos em other
+• removeAll(other) - diferença: remove do conjunto os elementos contidos em other
+
+
+## Referencias
+
+- https://youtu.be/d3QbptJRln4?list=PLL8woMHwr36HmQfxqqqxns5GexTNmxFqK
+- 
