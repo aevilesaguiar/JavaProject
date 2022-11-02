@@ -1531,6 +1531,56 @@ processamento de coleções.
     • Stream.iterate
 
 
+## Acesso a banco de dados com JDBC
+
+-  JDBC (Java Database Connectivity): API padrão do Java para acesso a dados
+
+![](.Readme_images/b5c20fb8.png)
+
+Criando a aplicação java -> o jdbc permite você programar o acesso a dados de uma forma única.
+e na sua aplicação você vai instalar um driver do JDBC . O JDBC Driver Manager vai converter o código único (Java application)
+para os BD específicos, no exemplo da figura Postgres, Oracle...) e cada um desses Drivers vai converter o código
+que fiz (java application) usando a API do JDBC para o código nativo para acessar o BD específico.
+
+- Operações básicas da álgebra Relacional
+
+   - Restrição
+   - Projeção
+   - Produto Cartesiano
+   - Junção (produto cartesiano + restrição de chaves correspondentes)
+
+Operação produto cartesiano -> SELECT * FROM PRODUCT, CATEGORY
+
+Operação junção:
+
+    SELECT *
+    FROM PRODUCT, CATEGORY
+    WHERE
+        PRODUCT.CATEGORY_ID = CATEGORY.ID
+
+    SELECT *
+    FROM PRODUCT 
+    INNER JOIN CATEGORY cat
+        ON PRODUCT.CATEGORY_ID = cat.ID
+
+
+Operação de Restrição:
+
+    SELECT *
+    FROM PRODUCT 
+    INNER JOIN CATEGORY cat ON PRODUCT.CATEGORY_ID = cat.ID
+    WHERE CATEGORY.NAME = 'Computers'
+
+A clausura Where é o que faz a restrição.
+
+
+Operação de Projeção
+
+    SELECT PRODUCT.*, CATEGORY.NAME
+    FROM PRODUCT 
+    INNER JOIN CATEGORY cat ON PRODUCT.CATEGORY_ID = cat.ID
+    WHERE CATEGORY.NAME = 'Computers'
+
 
 
 
