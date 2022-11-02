@@ -1259,6 +1259,281 @@ Alguns métodos importantes
 • removeAll(other) - diferença: remove do conjunto os elementos contidos em other
 
 
+
+## Programação Funcional e Expressões Lambda
+
+- Comparator
+
+Uma interface comparator é usada para ordenar os objetos de classes definidas pelo usuário. 
+Um objeto comparator é capaz de comparar dois objetos da mesma classe .
+A ordem de classificação é decidida pelo valor de retorno do método compareTo()
+O método retorna um número que indica se o objeto que está sendo comparado é menor, 
+igual ou maior que o objeto que está sendo passado como argumento.
+
+• Podemos implementar a comparação de produtos por meio da
+implementação da interface Comparable<Product>
+
+• Entretanto, desta forma nossa classe não fica fechada para
+alteração: se o critério de comparação mudar, precisaremos
+alterar a classe Product.
+
+• Podemos então usar o default method "sort" da interface List:
+default void sort(Comparator<? super E> c)
+
+![](.Readme_images/521e6bca.png)
+
+![](.Readme_images/894b6890.png)
+
+- Transparencia Referencial
+
+Uma função possui transparência referencial se seu resultado for sempre o mesmo
+para os mesmos dados de entrada. Benefícios: simplicidade e previsibilidade.
+Transparencial Referencial é quando o resultado da função depende exclusivamente dos valores de entrada
+aí você vai ter os meus resultados para os valores de entrada.
+
+- Objetos imutáeis : na programação imperativa eu posso alterar um vetor, eu posso alterar o tamanho de uma variável. já
+na programação funcional é comum que os objetos sejam imutáveis. Qual a vantagem de se ter um Objeto imutável?
+O programa fica mais simples, aquela variável vale um valor e eu sei que ela não vai mudar, então fica mais simples de 
+entender e dar manutenção no programa. Além disso objetos imutáveis são thread Safe ou seja mais fácil de se trabalhar com 
+concorrencia.
+
+- Funções são objetos de primeira Ordem/Classe: Isso significa que funções podem, por exemplo, serem passadas como parâmetros de
+  métodos, bem como retornadas como resultado de métodos. Isso é muito comum em programação funcional
+![](.Readme_images/af0138b9.png)
+
+- Expressividade/Código conciso: ou seja diferente da imperativa que é verboso e ocupa muito espaço.Na programação funcional 
+o código é conciso
+
+## O que são "expressões lambda"?
+
+Em programação funcional, expressão lambda corresponde a uma função anônima, ou seja uma função que não foi declarada
+e ela é de de primeira classe. Ela pode ser passada como argumento para outras funções.
+
+Cálculo Lambda = formalismo matemático base da programação funcional
+
+Expressão lambda = função anônima de primeira classe
+
+
+## Interface Funcional
+
+É uma interface que possui um único método abstrato. Suas implementações serão tratadas como expressões lambda
+
+![](.Readme_images/c4824659.png)
+
+Na linguagem java a interface funcional tem um mapeamento direto com a expressão lambda. No fundo a expressão lambda
+será tratada como uma interface funcional, ela só possui um método abstrato. 
+
+Exemplos de Interface funcional em java:
+
+- Predicate
+- Function
+- Consumer( Nota: ao contrário das outras interfaces funcionais, no caso do Consumer, é esperado ele possa gerar 
+efeitos colaterais, por que o método abstrata da interface Consumer é um método void,ele simplismente faz uma ação
+e essa ação pode ser qualquer coisa, é mais esperado que ela cause efeito colateral, mas é ua exceção )
+
+No fundo quando mexemos com uma expressão lambda estamos mexendo com uma interface funcional.
+
+
+## Predicate - interface Funcional
+
+Predicate é uma interface parametrizada com o tipo T, e ela possui apenas um método abstrato chamado test.
+![](.Readme_images/7facf353.png)
+
+## Consumer - interface Funcional
+
+Consumer é uma interface parametrizada com o tipo T, e ela possui apenas um método abstrato chamado accept.
+
+![](.Readme_images/d552f326.png)
+
+
+## Function - interface Funcional
+
+Function é uma interface que possui dois parametros , um tipo T e um tipo R E possui um método apply que recebe um 
+objeto do tipo T e retorna um Objeto do tipo R. Ou seja é um Função que recebe um T e retorna um R.
+
+![](.Readme_images/8ee67d12.png)
+
+Nota sobre a função map
+
+• A função "map" (não confunda com a estrutura de dados Map) é uma
+função que aplica uma função a todos elementos de uma stream.
+
+- Stream é uma sequencia de dados; 
+- A função map não funciona a partir de uma lista, ela funciona a partir de uma stream. 
+Então teremos que converter a nossa lista para stream, aplicar o map e depois converter a stream de volta para lista.
+
+• Conversões:
+
+        • List para stream: .stream()
+        • Stream para List: .collect(Collectors.toList())
+
+
+## Recordado
+
+- removeIf(Predicate): função removeIf que recebe um Predicate como argumento, Predicate é uma função que recebe um objeto
+e retorna true ou false.
+- foreach(Consumer): o foreach que recebe uma função especial chamada Consumer
+- map(Function) :map recebe uma função do tipo Function 
+
+Mas se eu quiser criar uma função, que recebe outra função como argumento?
+
+## Stream
+
+É uma sequencia de elementos advinda de uma fonte de dados que oferece suporte a "operações agregadas".
+• Fonte de dados: coleção, array, função de iteração, recurso de E/S
+
+
+- https://www.oracle.com/br/technical-resources/articles/java-stream-api.html
+
+a Streams API, novo recurso do Java que facilita o desenvolvimento, reduz o tamanho do código e simplifica o uso do paralelismo
+Uma das novas features recebe o nome de Expressões Lambda (EL)
+Outro recurso adicionado à nova versão da linguagem é a API para lidar com datas, a Date and Time, baseada na famosa 
+biblioteca JodaTime. O novo pacote, java.time, possui várias classes para trabalhar com objetos que armazenam apenas 
+datas, horas ou mesmo ambos de forma simultânea.
+
+Essa versão trouxe também o recurso denominado Default Methods, que foi introduzido para possibilitar a evolução de 
+interfaces ao permitir que interfaces já existentes ofereçam métodos novos sem que os códigos que as implementem também 
+tenham que fornecer uma implementação para esses métodos. Diante disso, note que um dos focos dessa nova versão continua 
+sendo manter a compatibilidade com códigos legados e ser o menos intrusivo possível, ou seja, afetar o menos possível 
+as antigas APIs. Essa nova feature foi usada para incluir o método stream() na API de Collections, por exemplo, e 
+possibilitar que todas as coleções sejam fontes de dados para streams. Além deste, outros métodos padrão também foram 
+incorporados à API de coleções, como o removeIf() na interface Collection, e em Comparator, o método reversed(), que 
+retorna um novo comparador que realiza a ordenação ao contrário.
+
+A Streams API traz uma nova opção para a manipulação de coleções em Java seguindo os princípios da programação funcional. 
+Combinada com as expressões lambda, ela proporciona uma forma diferente de lidar com conjuntos de elementos, oferecendo 
+ao desenvolvedor uma maneira simples e concisa de escrever código que resulta em facilidade de manutenção e paralelização 
+sem efeitos indesejados em tempo de execução.
+
+A proposta em torno da Streams API é fazer com que o desenvolvedor não se preocupe mais com a forma de se programar o 
+comportamento, deixando a parte relacionada ao controle de fluxo e loop a cargo da API. É algo muito parecido com o 
+que é feito com Threads, onde os aspectos mais complexos ficam encapsulados em APIs e as regras de negócio passam a ser a 
+única responsabilidade do desenvolvedor.
+
+Outro ponto a se destacar sobre a Streams API diz respeito à eficiência do processamento. Com o aperfeiçoamento constante 
+do hardware, sobretudo a proliferação das CPUs multicore, a API levou isso em consideração e com o apoio do paradigma 
+funcional, suporta a paralelização de operações para processar os dados – abstraindo a lógica de baixo nível para se 
+ter um código multithreading – e deixa o desenvolvedor concentrar-se totalmente nas regras existentes.
+
+
+
+
+
+## Características Stream
+
+• Sequência de elementos: Uma stream provê uma interface para um conjunto sequencial de valores de um determinado tipo. 
+Contudo, streams não armazenam elementos. Eles são processados sob demanda;
+
+• Fonte de dados: Streams consomem dados de uma fonte, como coleções, arrays ou mesmo recursos de E/S (entrada e saída);
+
+• Stream é uma solução para processar sequências de dados de forma:
+
+• Declarativa (iteração interna: escondida do programador)
+       
+        • Parallel-friendly (imutável -> thread safe)
+        • Sem efeitos colaterais
+        • Sob demanda (lazy evaluation)
+
+• Operações de agregação: Streams suportam operações comuns a linguagens de programação funcionais, como filtrar, 
+modificar, transformar o elemento em outro e assim por diante. Essas operações podem ser realizadas em série ou em paralelo.
+Além disso, as operações relacionadas a streams têm duas características fundamentais que as tornam muito diferentes das 
+operações sobre coleções. São elas:
+
+Acesso sequencial (não há índices)
+
+Single-use: só pode ser "usada" uma vez
+
+Pipeline: operações em streams retornam novas streams. Então é possível criar uma cadeia de operações (fluxo de processamento).
+
+Saiba que as operações intermediárias sempre retornam uma nova stream, de modo que seja possível realizar o encadeamento de 
+múltiplas operações intermediárias. Já as operações terminais, como o próprio nome sugere, residem no final da cadeia de 
+operações e seu objetivo é fechar o processo. Elas retornam um resultado diferente de uma stream, que pode ser um valor 
+ou um objeto. Em suma, a Streams API trabalha convertendo uma fonte de dados em uma Stream. Em seguida, realiza o 
+processamento dos dados através das operações intermediárias e, por fim, retorna uma nova coleção ou valor 
+reduzido (map-reduce) com a chamada a uma operação terminal.
+
+- Operações intermediárias e terminais
+
+• O pipeline é composto por zero ou mais operações intermediárias e uma terminal.
+
+• Operação intermediária:
+
+        • Produz uma nova streams (encadeamento)
+        • Só executa quando uma operação terminal é invocada (lazy evaluation)
+
+• Operação terminal:
+
+        • Produz um objeto não-stream (coleção ou outro)
+        • Determina o fim do processamento da stream
+
+- Operações intermediárias
+
+• filter
+• map
+• flatmap
+• peek
+• distinct
+• sorted
+• skip
+• limit (*)
+* short-circuit(por que corta a execução)
+
+Algumas das operações intermediárias mais utilizadas são: filter(), map(), sorted(), limit() e distinct().
+
+- Filter O método filter() é usado para filtrar elementos de uma stream de acordo com uma condição (predicado). 
+Para isso, ele recebe como parâmetro um objeto que implementa a interface Predicate<T> (interface funcional que
+define uma função com valor de retorno igual a um boolean) e retorna uma nova stream contendo apenas os elementos
+que satisfazem à condição.
+
+- Map : Diante de algumas situações se faz necessário realizar transformações em uma lista de dados. O método map() 
+permite realizar essas mudanças sem a necessidade de variáveis intermediárias, apenas utilizando como argumento uma 
+função do tipo java.util.function.Function, que, assim como Predicate<T>, também é uma interface funcional. 
+Essa função toma cada elemento de uma stream como parâmetro e retorna o elemento processado como resposta. 
+O resultado será uma nova stream contendo os elementos mapeados a partir da stream original.
+
+- Sorted: A ordenação de elementos em coleções é uma tarefa recorrente no dia a dia de todo desenvolvedor. No Java 8, 
+felizmente, isso foi bastante facilitado, eliminando a necessidade de implementar o verboso Comparator, assim como as 
+classes internas anônimas, proporcionando ao código clareza e simplicidade. Para isso, a Streams API oferece a operação 
+sorted(). Esse método retorna uma nova stream contendo os elementos da stream original ordenados de acordo com algum 
+critério.
+
+- Operações terminais
+
+• forEach
+• forEachOrdered
+• toArray
+• reduce
+• collect
+• min
+• max
+• count
+• anyMatch (*)
+• allMatch (*)
+• noneMatch (*)
+• findFirst (*)
+• findAny (*)
+* short-circuit (quando a condição é satisfeita o elemento encerra o processamento )
+
+- Criar uma stream
+
+Como criar streams O primeiro passo para se trabalhar com streams é saber como criá-las A forma mais comum é através de 
+uma coleção de dados, tendo em vista que o principal propósito dessa API é tornar mais flexível e eficiente o 
+processamento de coleções.
+
+• Basta chamar o método stream() ou parallelStream() a partir de qualquer objeto Collection.
+
+-> https://docs.oracle.com/javase/10/docs/api/java/util/Collection.html
+
+• Outras formas de se criar uma stream incluem:
+
+    • Stream.of
+    • Stream.ofNullable
+    • Stream.iterate
+
+
+
+
+
 ## Referencias
 
 - https://youtu.be/d3QbptJRln4?list=PLL8woMHwr36HmQfxqqqxns5GexTNmxFqK
